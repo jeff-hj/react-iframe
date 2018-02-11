@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+</head>
+<body>
+<div class="header ">
+  <div class="topNav">
+
+    <div class="branding">
+      <div class="shopName">
+        <div class="busiInfo">
+                        <span class="shopFont">
+                            <span class="busiTopName" title="Jay's Zuni Cafe">
+                                Jay's Zuni Cafe</span>
+                            </span>
+
+          <p class="syncIcon">
+
+            The last sync was today at 4:02 AM.
+          </p>
+        </div>
+      </div>
+
+
+
+      <!-- New Ui Not showing
+  Patient Search-->
+
+      <input type="text" class="ghost_text topNavIcon customerSearch" id="customerSearch" placeholder="Search Patients" title="Search Patients" value="">
+
+
+    </div>
+  </div>
+  <div id="mainMenu" class="menu  menu-compressed ">
+    <ul class="">
+      <li class="selected">
+        <a href="/bp2/dashboard/dashboard.jsp">Dashboard</a>
+      </li>
+      <li class="">
+        <a href="/bp2/appointments/appointments.jsp">Appointments</a>
+      </li>
+      <li class="">
+        <a href="/bp2/customers/customerlist.jsp?sort=All">Patients</a>
+      </li>
+
+
+      <li class="">
+        <a href="/bp2/postcardV2/postcard.jsp?src=postcard">Postcards</a>
+      </li>
+      <li class="">
+        <a href="/bp2/referrals/referrals.jsp">Referrals</a>
+      </li>
+      <li class="">
+        <a href="/bp2/interview/survey/survey.do">Surveys</a>
+      </li>
+      <li class="">
+        <a href="/bp2/interview/review/review.jsp">Reviews</a>
+      </li>
+
+
+      <li id="activityNav" class="last hoverNav"><a href="/bp2/emails/showEmails.do?commDate=7">Activity</a><div class="arrow-up-outer"></div><div class="arrow-up-inner"></div><div class="subnav"><ul><li class="">
+        <a href="/bp2/emails/showEmails.do?commDate=7">Email History</a>
+      </li><li class="">
+        <a href="/bp2/text/text.jsp?commDate=7">Text History</a>
+      </li><li class="">
+        <a href="/bp2/results/results.jsp">Results</a>
+      </li><li class="last hasMenu_1 ">
+        <a href="/bp2/network/network.jsp">Local</a>
+      </li></ul></div></li><li id="messages-center-badge"><div data-reactroot=""><span class="unread-badge"><span class="badge-icon online"></span><span> Texts </span><span class=""></span></span><span></span></div></li>
+    </ul>
+
+  </div>
+</div>
+
+<table class="sortable-table"><caption style="font-family: HelveticaNeue-Light, Helvetica, Arial, sans-serif; font-size: 26px; color: rgb(64, 64, 64); cursor: pointer;"><svg style="vertical-align: middle; margin-left: 10px; cursor: pointer; margin-right: 8px; transform: rotate(90deg);" height="24px" width="24px" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><style>.cls-1{fill:#0098cd;}</style></defs><title>1</title><path class="cls-1" d="M39.15,29.73L26,16.62a1.25,1.25,0,1,0-1.77,1.77L37.38,31.49a0.72,0.72,0,0,1,0,1L24.27,45.62A1.25,1.25,0,1,0,26,47.38L39.15,34.27A3.22,3.22,0,0,0,39.15,29.73Z" style="fill: rgb(85, 85, 85);"></path></svg>Incoming Appointments<!-- ngIf: actionableCount > 0 --><span ng-if="actionableCount > 0" class="num-circle ng-binding ng-scope">2</span><!-- end ngIf: actionableCount > 0 --><!-- ngIf: !props.isRestrictedUser --><div id="appt-toggle" class="appt-typeset-switcher"><p class="fieldset_appt_type_switcher"><input type="radio" name="apptType" value="unmanaged" id="unmanaged" ng-model="apptsTypes" ng-change="switchAppts(apptsTypes)" class="ng-pristine ng-valid"><label for="unmanaged" id="unmanaged_lbl">Unmanaged</label><input type="radio" name="apptType" value="all" id="all" ng-model="apptsTypes" ng-change="switchAppts(apptsTypes)" class="ng-pristine ng-valid"><label for="all" id="all_lbl">All</label><span class="appt-typeset-switch"></span></p></div></caption><!-- ngIf: appointments.length > 0 --><thead ng-if="appointments.length > 0" class="ng-scope"><tr><!-- ngRepeat: th in head --><th ng-repeat="th in head" ng-class="$last? th.head + '-column lastChild': th.head + '-column';" ng-switch="th.head.length" class="ng-scope -column"><span ng-switch="th.head" ng-class="{lastChild:$last}"><!-- ngSwitchDefault: ng-switch-default --><!-- ngSwitchWhen:  --><span ng-switch-when="" class="ng-scope"></span></span></th><!-- end ngRepeat: th in head --><th ng-repeat="th in head" ng-class="$last? th.head + '-column lastChild': th.head + '-column';" ng-switch="th.head.length" class="ng-scope Status-column"><span ng-switch="th.head" ng-class="{lastChild:$last}"><!-- ngSwitchDefault: ng-switch-default --><span href="#" ng-switch-default="ng-switch-default" ng-click="changeSorting(th)" ng-class="selectedCls(th.column)" class="ng-binding ng-scope sort-false">Status</span><!-- ngSwitchWhen:  --></span></th><!-- end ngRepeat: th in head --><th ng-repeat="th in head" ng-class="$last? th.head + '-column lastChild': th.head + '-column';" ng-switch="th.head.length" class="ng-scope Date &amp; Time-column"><span ng-switch="th.head" ng-class="{lastChild:$last}"><!-- ngSwitchDefault: ng-switch-default --><span href="#" ng-switch-default="ng-switch-default" ng-click="changeSorting(th)" ng-class="selectedCls(th.column)" class="ng-binding ng-scope sort-default">Date &amp; Time</span><!-- ngSwitchWhen:  --></span></th><!-- end ngRepeat: th in head --><th ng-repeat="th in head" ng-class="$last? th.head + '-column lastChild': th.head + '-column';" ng-switch="th.head.length" class="ng-scope Patient-column"><span ng-switch="th.head" ng-class="{lastChild:$last}"><!-- ngSwitchDefault: ng-switch-default --><span href="#" ng-switch-default="ng-switch-default" ng-click="changeSorting(th)" ng-class="selectedCls(th.column)" class="ng-binding ng-scope sort-default">Patient</span><!-- ngSwitchWhen:  --></span></th><!-- end ngRepeat: th in head --><th ng-repeat="th in head" ng-class="$last? th.head + '-column lastChild': th.head + '-column';" ng-switch="th.head.length" class="ng-scope Service-column"><span ng-switch="th.head" ng-class="{lastChild:$last}"><!-- ngSwitchDefault: ng-switch-default --><span href="#" ng-switch-default="ng-switch-default" ng-click="changeSorting(th)" ng-class="selectedCls(th.column)" class="ng-binding ng-scope sort-default">Service</span><!-- ngSwitchWhen:  --></span></th><!-- end ngRepeat: th in head --><th ng-repeat="th in head" ng-class="$last? th.head + '-column lastChild': th.head + '-column';" ng-switch="th.head.length" class="ng-scope Source-column lastChild"><span ng-switch="th.head" ng-class="{lastChild:$last}" class="lastChild"><!-- ngSwitchDefault: ng-switch-default --><span href="#" ng-switch-default="ng-switch-default" ng-click="changeSorting(th)" ng-class="selectedCls(th.column)" class="ng-binding ng-scope sort-default">Source</span><!-- ngSwitchWhen:  --></span></th><!-- end ngRepeat: th in head --></tr></thead><!-- end ngIf: appointments.length > 0 --><tbody ng-switch="appointments.length"><tr class="lastChild"><!-- ngSwitchWhen: 0 --></tr><!-- ngRepeat: app in appointments --><tr ng-repeat-start="app in appointments" ng-class="{bolded: app.status != status.SCHEDULED, isOpen: isOpen(app), isEnterprise: isEnterprise()}" ng-click="open(app)" ng-mouseenter="collpaseshow = true" ng-mouseleave="collpaseshow = false" class="ng-scope bolded"><td rowspan="1" class="triangle"><span ng-class="{'text-expand-icon': isOpen(app)}" onclick="logEvent(&quot;clicked:Dashboard_IncomingAppt_Plus_Button&quot;)" class="text-collapse-icon">&gt;</span></td><td ng-class="{error: app.status == status.CANCELLED_BY_CONSUMER, 'scheduled-gray': isExpired(app)}" rowspan="1" class="statusColumn ng-binding scheduled-gray">Requested<!-- ngIf: app.customerflog && app.status != status.SCHEDULED --><small ng-if="app.customerflog &amp;&amp; app.status != status.SCHEDULED" class="new ng-scope">&nbsp;NEW</small><!-- end ngIf: app.customerflog && app.status != status.SCHEDULED --></td><td rowspan="1" ng-class="{mulDatetimeColumn:app.date2!=null||app.date3!=null}" ng-click="stopOpen($event,isOpen(app))" class="datetimeColumn mulDatetimeColumn"><div><!-- ngIf: (app.date2) || (app.date3) --><input type="radio" name="scheduledDate438245934" ng-if="(app.date2) || (app.date3)" value="0" id="438245934_scheduledDate1" checked="checked" ng-click="chooseDate(app,0)" class="ng-scope"><!-- end ngIf: (app.date2) || (app.date3) --><label for="438245934_scheduledDate1" ng-class="{'scheduled-gray': isExpiredDate(app.scheduledDate)}" class="ng-binding scheduled-gray">1/31<span class="ng-binding">&nbsp;WED</span></label><span ng-class="{'scheduled-gray': isExpired(app)}" class="textLt ng-binding scheduled-gray">1:30 am</span></div><!-- ngIf: app.date2 && (app.status != status.SCHEDULED) --><div ng-if="app.date2 &amp;&amp; (app.status != status.SCHEDULED)" ng-class="{'scheduled-gray': isExpiredDate(app.date2)}" class="ng-scope scheduled-gray"><input type="radio" name="scheduledDate438245934" value="1" id="438245934_scheduledDate2" ng-click="chooseDate(app,1)"><label for="438245934_scheduledDate2" class="ng-binding">2/2<span class="ng-binding">&nbsp;FRI</span></label></div><!-- end ngIf: app.date2 && (app.status != status.SCHEDULED) --><!-- ngIf: app.date3 && (app.status != status.SCHEDULED) --><div ng-if="app.date3 &amp;&amp; (app.status != status.SCHEDULED)" ng-class="{'scheduled-gray': isExpiredDate(app.date3)}" class="ng-scope scheduled-gray"><input type="radio" name="scheduledDate438245934" value="2" id="438245934_scheduledDate3" ng-click="chooseDate(app,2)"><label for="438245934_scheduledDate3" class="ng-binding">2/3<span class="ng-binding">&nbsp;SAT</span></label></div><!-- end ngIf: app.date3 && (app.status != status.SCHEDULED) --></td><!-- ngIf: app.businessId > 0 --><td ng-class="{'scheduled-gray': isExpired(app)}" rowspan="1" class="bisnameColumn ng-binding scheduled-gray"><!-- ngIf: app.businessId == 0 && app.customerID != 0 -->test test<!-- ngIf: app.businessId > 0 --><div class="textLt"><!-- ngIf: !clickToCallEnabled() --><span ng-if="!clickToCallEnabled()" ng-class="{'scheduled-gray': isExpired(app)}" class="ng-binding ng-scope scheduled-gray">(555)555-5555</span><!-- end ngIf: !clickToCallEnabled() --><!-- ngIf: clickToCallEnabled() --><!-- ngIf: isOpen(app) && !isEnterprise() --></div></td><td ng-class="{'scheduled-gray': isExpired(app)}" class="ng-binding scheduled-gray">Existing Patient Check-up &amp; Cleaning<!-- ngIf: app.providerName && app.services --></td><td title="DF Network" ng-class="{'scheduled-gray': isExpired(app)}" class="source ng-binding scheduled-gray">DF Network</td><!-- ngIf: app.businessId > 0 --></tr><!-- ngIf: isOpen(app) --><!-- end ngRepeat: app in appointments --><tr ng-repeat-start="app in appointments" ng-class="{bolded: app.status != status.SCHEDULED, isOpen: isOpen(app), isEnterprise: isEnterprise()}" ng-click="open(app)" ng-mouseenter="collpaseshow = true" ng-mouseleave="collpaseshow = false" class="ng-scope bolded"><td rowspan="1" class="triangle"><span ng-class="{'text-expand-icon': isOpen(app)}" onclick="logEvent(&quot;clicked:Dashboard_IncomingAppt_Plus_Button&quot;)" class="text-collapse-icon">&gt;</span></td><td ng-class="{error: app.status == status.CANCELLED_BY_CONSUMER, 'scheduled-gray': isExpired(app)}" rowspan="1" class="statusColumn ng-binding">Requested<!-- ngIf: app.customerflog && app.status != status.SCHEDULED --><small ng-if="app.customerflog &amp;&amp; app.status != status.SCHEDULED" class="new ng-scope">&nbsp;NEW</small><!-- end ngIf: app.customerflog && app.status != status.SCHEDULED --></td><td rowspan="1" ng-class="{mulDatetimeColumn:app.date2!=null||app.date3!=null}" ng-click="stopOpen($event,isOpen(app))" class="datetimeColumn"><div><!-- ngIf: (app.date2) || (app.date3) --><label for="438361043_scheduledDate1" ng-class="{'scheduled-gray': isExpiredDate(app.scheduledDate)}" class="ng-binding">2/14<span class="ng-binding">&nbsp;WED</span></label><span ng-class="{'scheduled-gray': isExpired(app)}" class="textLt ng-binding">8:00 am</span></div><!-- ngIf: app.date2 && (app.status != status.SCHEDULED) --><!-- ngIf: app.date3 && (app.status != status.SCHEDULED) --></td><!-- ngIf: app.businessId > 0 --><td ng-class="{'scheduled-gray': isExpired(app)}" rowspan="1" class="bisnameColumn ng-binding"><!-- ngIf: app.businessId == 0 && app.customerID != 0 -->test test<!-- ngIf: app.businessId > 0 --><div class="textLt"><!-- ngIf: !clickToCallEnabled() --><span ng-if="!clickToCallEnabled()" ng-class="{'scheduled-gray': isExpired(app)}" class="ng-binding ng-scope">(555)555-5555</span><!-- end ngIf: !clickToCallEnabled() --><!-- ngIf: clickToCallEnabled() --><!-- ngIf: isOpen(app) && !isEnterprise() --></div></td><td ng-class="{'scheduled-gray': isExpired(app)}" class="ng-binding">Existing Patient Check-up &amp; Cleaning<!-- ngIf: app.providerName && app.services --></td><td title="DF Network" ng-class="{'scheduled-gray': isExpired(app)}" class="source ng-binding">DF Network</td><!-- ngIf: app.businessId > 0 --></tr><!-- ngIf: isOpen(app) --><!-- end ngRepeat: app in appointments --><!-- ngIf: appointments.length > 0 --><tr ng-if="appointments.length > 0" class="lastChild ng-scope"><td colspan="8" class="lastChild"><div table-paginator="table-paginator" filter-criteria="filterCriteria" pagination="pagination" fetch-page="fetchAppointments(sortStatus)" class="ng-isolate-scope"><ul ng-show="pagination.totalPages > 1" class="paginator ng-hide"><li><button ng-disabled="filterCriteria.curPage == 1" ng-click="selectPage(filterCriteria.curPage-1)" disabled="disabled">« Previous</button></li><!-- ngIf: filterCriteria.curPage > 9 --><!-- ngIf: filterCriteria.curPage > 9 --><!-- ngRepeat: i in pagination.currentPageRange | makeRange --><li ng-repeat="i in pagination.currentPageRange | makeRange" ng-class="{active: i == filterCriteria.curPage}" class="num ng-scope active"><a href="#" ng-click="selectPage(i); $event.preventDefault()" class="ng-binding">1</a></li><!-- end ngRepeat: i in pagination.currentPageRange | makeRange --><!-- ngIf: pagination.totalPages > 9 --><!-- ngIf: filterCriteria.totalPages > 9 --><li><button ng-disabled="filterCriteria.curPage == pagination.totalPages" ng-click="selectPage(filterCriteria.curPage+1);" disabled="disabled">Next »</button></li></ul><p class="page-count"><b class="ng-binding">1-2</b> of&nbsp;<b class="ng-binding">2</b> records</p></div></td></tr><!-- end ngIf: appointments.length > 0 --></tbody></table>
+</body>
+</html>
